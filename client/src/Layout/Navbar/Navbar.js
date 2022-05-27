@@ -1,7 +1,7 @@
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -21,39 +21,64 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto ">
-            <li className="nav-item"></li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => {
-                  return isActive ? "nav-link active" : "nav-link";
-                }}
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => {
-                  return isActive ? "nav-link active" : "nav-link";
-                }}
-                to="/about"
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                className={({ isActive }) => {
-                  return isActive ? "nav-link active" : "nav-link";
-                }}
-                to="/profile"
-              >
-                Profile
-              </NavLink>
-            </li>
-          </ul>
+          {user && (
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? "nav-link active" : "nav-link";
+                  }}
+                  to="/"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? "nav-link active" : "nav-link";
+                  }}
+                  to="/about"
+                >
+                  About
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? "nav-link active" : "nav-link";
+                  }}
+                  to="/profile"
+                >
+                  Profile
+                </NavLink>
+              </li>
+            </ul>
+          )}
+          {!user && (
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? "nav-link active" : "nav-link";
+                  }}
+                  to="login"
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? "nav-link active" : "nav-link";
+                  }}
+                  to="/Register"
+                >
+                  Register
+                </NavLink>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </nav>
