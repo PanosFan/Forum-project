@@ -25,7 +25,7 @@ const Navbar = ({ user }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          {user && (
+          {user ? (
             <ul className="navbar-nav ms-auto">
               <li className="nav-item mx-auto">
                 <NavLink className={isActive} to="/">
@@ -43,9 +43,7 @@ const Navbar = ({ user }) => {
                 </NavLink>
               </li>
             </ul>
-          )}
-
-          {!user && (
+          ) : (
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item mx-auto">
                 <NavLink className={isActive} to="login">

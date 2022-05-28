@@ -16,15 +16,14 @@ const App = () => {
     <>
       <Navbar user={user} />
       <Routes>
-        {user && (
+        {user ? (
           <>
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="profile" element={<Profile />} />
             <Route path="login" element={<Navigate to="/" />} />
           </>
-        )}
-        {!user && (
+        ) : (
           <>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
