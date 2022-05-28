@@ -2,6 +2,10 @@ import "./navbar.css";
 import { NavLink } from "react-router-dom";
 
 const Navbar = ({ user }) => {
+  const isActive = ({ isActive }) => {
+    return isActive ? "nav-link active" : "nav-link";
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -22,58 +26,34 @@ const Navbar = ({ user }) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           {user && (
-            <ul className="navbar-nav ms-auto ">
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "nav-link active" : "nav-link";
-                  }}
-                  to="/"
-                >
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item mx-auto">
+                <NavLink className={isActive} to="/">
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "nav-link active" : "nav-link";
-                  }}
-                  to="/about"
-                >
+              <li className="nav-item mx-auto">
+                <NavLink className={isActive} to="about">
                   About
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "nav-link active" : "nav-link";
-                  }}
-                  to="/profile"
-                >
+              <li className="nav-item mx-auto">
+                <NavLink className={isActive} to="profile">
                   Profile
                 </NavLink>
               </li>
             </ul>
           )}
+
           {!user && (
             <ul className="navbar-nav ms-auto ">
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "nav-link active" : "nav-link";
-                  }}
-                  to="login"
-                >
+              <li className="nav-item mx-auto">
+                <NavLink className={isActive} to="login">
                   Login
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "nav-link active" : "nav-link";
-                  }}
-                  to="/Register"
-                >
+              <li className="nav-item mx-auto">
+                <NavLink className={isActive} to="register">
                   Register
                 </NavLink>
               </li>
