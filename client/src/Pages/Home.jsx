@@ -1,17 +1,15 @@
-import React from "react";
 import useAxios from "../Hooks/useAxios";
 
 const Home = () => {
   const { response, error, loading } = useAxios({
     method: "GET",
-    url: "https://jsonplaceholder.typicode.com/todos/1",
+    url: "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo",
   });
 
   return (
     <div className="container">
-      <p>{response && response.id}</p>
-      <p>{error && error}</p>
-      <p>{loading && "loading"}</p>
+      {error && <p>{error}</p>}
+      {loading && <p>Loading</p>}
     </div>
   );
 };

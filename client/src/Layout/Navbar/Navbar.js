@@ -1,11 +1,9 @@
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
+import handleLogout from "../../functions/auth/handleLogout";
+import isActive from "../../functions/navbarFunctions/isActive";
 
-const Navbar = ({ user }) => {
-  const isActive = ({ isActive }) => {
-    return isActive ? "nav-link active" : "nav-link";
-  };
-
+const Navbar = ({ user, setUser }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -41,6 +39,15 @@ const Navbar = ({ user }) => {
                 <NavLink className={isActive} to="profile">
                   Profile
                 </NavLink>
+              </li>
+              <li className="nav-item mx-auto">
+                <a
+                  onClick={() => handleLogout(setUser)}
+                  className="nav-link text-danger"
+                  type="button"
+                >
+                  Logout
+                </a>
               </li>
             </ul>
           ) : (

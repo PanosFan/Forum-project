@@ -1,5 +1,18 @@
+import useAxios from "../Hooks/useAxios";
+
 const Profile = () => {
-  return <div className="container">Profile</div>;
+  const { response, error, loading } = useAxios({
+    method: "GET",
+    url: "https://jsonplaceholder.typicode.com/comments/4",
+  });
+
+  return (
+    <div className="container">
+      <p>{response && response.name}</p>
+      {error && <p>{error}</p>}
+      {loading && <p>Loading</p>}
+    </div>
+  );
 };
 
 export default Profile;

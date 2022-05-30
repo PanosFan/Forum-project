@@ -10,11 +10,11 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 
 const App = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
         {user ? (
           <>
@@ -25,7 +25,7 @@ const App = () => {
           </>
         ) : (
           <>
-            <Route path="login" element={<Login />} />
+            <Route path="login" element={<Login setUser={setUser} />} />
             <Route path="register" element={<Register />} />
           </>
         )}

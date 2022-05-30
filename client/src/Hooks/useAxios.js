@@ -19,6 +19,7 @@ const useAxios = (configObject) => {
           method,
           url,
         });
+        console.log(response.data);
         setResponse(response.data);
       } catch (error) {
         if (error.message !== "canceled") {
@@ -28,7 +29,6 @@ const useAxios = (configObject) => {
         setLoading(false);
       }
     })();
-
     return () => controller.abort();
   }, []);
 
