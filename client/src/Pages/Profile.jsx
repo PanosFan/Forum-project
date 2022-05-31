@@ -8,7 +8,7 @@ const Profile = () => {
 
   return (
     <div className="container">
-      <p>{response && response.name}</p>
+      {response && <p>{response.name}</p>}
       {error && <p>{error}</p>}
       {loading && <p>Loading</p>}
     </div>

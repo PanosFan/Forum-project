@@ -19,16 +19,16 @@ const useAxios = (configObject) => {
           method,
           url,
         });
-        console.log(response.data);
+        setLoading(false);
         setResponse(response.data);
       } catch (error) {
         if (error.message !== "canceled") {
+          setLoading(false);
           setError(error.message);
         }
-      } finally {
-        setLoading(false);
       }
     })();
+
     return () => controller.abort();
   }, []);
 
