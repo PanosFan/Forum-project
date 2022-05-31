@@ -11,23 +11,24 @@ const useAxios = (configObject) => {
 
   useEffect(() => {
     const controller = new AbortController();
-    (async () => {
-      try {
-        const response = await axios.request({
-          data: payload,
-          signal: controller.signal,
-          method,
-          url,
-        });
+
+    axios
+      .request({
+        data: payload,
+        signal: controller.signal,
+        method,
+        url,
+      })
+      .then((response) => {
         setLoading(false);
         setResponse(response.data);
-      } catch (error) {
+      })
+      .catch((error) => {
         if (error.message !== "canceled") {
           setLoading(false);
           setError(error.message);
         }
-      }
-    })();
+      });
 
     return () => controller.abort();
   }, []);
